@@ -1,0 +1,3 @@
+$ cat .gitattributes
+*.rb linguist-language=Processing
+/src/dmst/theosotr/project/Antikythera-Mechanism/web/processing.js linguist-vendored

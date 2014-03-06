@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="processing.js"></script>
+    <title>Emulator of Antikythera's Mechanism</title>
+    <style type="text/css">
+        #canvas1 { z-index: 5; }
+	#canvas2 { z-index: 5; }
+	select { width: 300px; }
+    </style>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script>
+	var selection;
+	$(function() {
+ 		$("#tabs").tabs();
+		$("select").selectmenu({
+			change: function(event) {
+				event.preventDefault();
+				selection = $(this).val();
+				if (selection == "6") {
+					$("#canvas1").show();
+					$("#canvas2").hide();
+				} else {
+					$("#canvas2").show();
+					$("#canvas1").hide();
+				}
+			}
+		});
+	});
+    </script>
+  </head>
+  <body>
+    <div id="tabs">
+	<ul><li><a href="#antikythera">Antikythera Mechanism Emulator</a></li></ul>
+	<div id="antikythera">
+	    <h2 style="text-align: center;">Emulator of Antikythera's Mechanism</h2>
+		<div id="selected_options1">
+		  <select id="operations" onchange="selectOperation()">
+		    <option value="0" selected>-Select-</option>
+		    <option value="1">Lunisolar</option>
+		    <option value="2">Lunar</option>
+		    <option value="3">Eclipse</option>
+		    <option value="4">MoonPhase</option>
+		    <option value="5">Back Dial</option>
+		    <option value="6">Front Dial</option>
+		    <option value="7">All gears</option>
+		  </select>
+	    </div>
+	 	<div id="content">
+	    	<div>
+		    	<canvas id="canvas1" data-processing-sources="FrontDialSketch.pde" width="400" height="600"></canvas>
+			<canvas id="canvas2" data-processing-sources="MechanismSketch.pde" width="400" height="600"></canvas>
+	   	    </div>
+   	    </div>
+	</div>
+   </div>
+   <div id="footer" class="ui-widget">
+        <div class="ui-corner-all ui-state-active">
+            <p>&copy; 2014, 2016 Thodoris Sotiropoulos - Athens University of Economics and Business Department
+                of Management Science and Technology</p>
+        </div>
+    </div>
+  </body>
+</html>
+
